@@ -18,5 +18,6 @@
     "titleBar.inactiveBackground": "#eb684199",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#eb6841"
+  "peacock.color": "#eb6841",
+  "notebook.defaultFormatter": "esbenp.prettier-vscode"
 }
