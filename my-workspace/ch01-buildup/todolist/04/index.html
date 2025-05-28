@@ -1,3 +1,5 @@
+<!-- 삭제 기능 -->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,6 +7,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List App</title>
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #e7e6e6;
+    }
+
+    input {
+      width: 9.375rem;
+  height: 25px;
+  color: #fff;
+  border-radius: 5px;
+  padding: .3125rem .625rem;
+      box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+
+  border: none;
+  color: #000;
+    }
+
+    button {
+  margin: .625rem;
+  width: 2.8125rem;
+  height: 35px;
+  color: #fff;
+  border-radius: 5px;
+  padding: .3125rem .625rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+
+  border: none;
+  color: #000;
+}
+
+button:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  border-radius: 5px;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+button:hover {
+  color: #000;
+}
+button:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+button:active {
+  top: 2px;
+}
+    s {
+      color: #888;
+    }
+  </style>
 </head>
 <body>
   <div id="todo">
@@ -85,7 +163,7 @@
       const titleSpan = document.createElement('span');
       const deleteBtn = document.createElement('button');
 
-      const numTxt = document.createTextNode(item.num);
+      const numTxt = document.createTextNode(`${item.num}. `);
       const titleTxt = document.createTextNode(item.title);
       const deleteTxt = document.createTextNode('삭제');
 
@@ -191,9 +269,10 @@
     function deleteItem(num){
       console.log(num, '할일 삭제');
       // 데이터 갱신, itemList에서 num에 해당하는 item 삭제
-
+      const index = itemList.findIndex(item => item.num === num);
+      itemList.splice(index, 1);
       // 화면 갱신, 화면에서 num에 해당하는 item 제거
-
+      document.querySelector(`.todolist > li[data-num="${num}"]`).remove();
     }
   </script>
 </body>
