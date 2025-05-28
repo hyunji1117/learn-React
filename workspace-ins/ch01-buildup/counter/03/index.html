@@ -23,76 +23,37 @@
 
   <div id="root"></div>
 
-  <script>
+  <script type="module">
+    import Reaction from './reaction.js';
+
     /* JS로 UI 구성 */
 
     /* header 구성 */
-    // <h1>Counter - 02 JS로 UI 구성</h1>
-    const h1 = document.createElement('h1');
-    const h1Txt = document.createTextNode('Counter - 02 JS로 UI 구성');
-    h1.appendChild(h1Txt);
-
+    // <h1>Counter - 03 createElement() 함수 만들기</h1>
+    const h1 = Reaction.createElement('h1', null, 'Counter - 03 createElement() 함수 만들기');
     // <p>파일 경로: <span id="filepath"></span></p>
-    const p = document.createElement('p');
-    const pTxt = document.createTextNode('파일 경로: ');
-    const filepath = document.createElement('span');
-    filepath.setAttribute('id', 'filepath');
-    // filepath.id = 'filepath';
-    p.appendChild(pTxt);
-    p.appendChild(filepath);
-
+    const p = Reaction.createElement('p', null, '파일 경로: ', Reaction.createElement('span', { id: 'filepath' }));
     // <header></header>
-    const Header = document.createElement('header');
-    Header.appendChild(h1);
-    Header.appendChild(p);
-
+    const Header = Reaction.createElement('header', null, h1, p);
     /* counter 구성 */
     // <button type="button" onclick="handleDown()">-</button>
-    const downBtn = document.createElement('button');
-    downBtn.setAttribute('type', 'button');
-    downBtn.setAttribute('onclick', 'handleDown()');
-    const downBtnTxt = document.createTextNode('-');
-    downBtn.appendChild(downBtnTxt);
-
+    const downBtn = Reaction.createElement('button', { type: 'button', onclick: 'handleDown()' }, '-');
     // <button type="button" onclick="handleReset(event)">0</button>
-    const resetBtn = document.createElement('button');
-    resetBtn.setAttribute('type', 'button');
-    resetBtn.setAttribute('onclick', 'handleReset()');
-    const resetBtnTxt = document.createTextNode('0');
-    resetBtn.appendChild(resetBtnTxt);
-
+    const resetBtn = Reaction.createElement('button', { type: 'button', onclick: 'handleReset()' }, 0);
     // <button type="button" onclick="handleUp()">+</button>
-    const upBtn = document.createElement('button');
-    upBtn.setAttribute('type', 'button');
-    upBtn.setAttribute('onclick', 'handleUp()');
-    const upBtnTxt = document.createTextNode('+');
-    upBtn.appendChild(upBtnTxt);
-
+    const upBtn = Reaction.createElement('button', { type: 'button', onclick: 'handleUp()' }, '+');
     // <span>0</span>
-    const span = document.createElement('span');
-    const spanTxt = document.createTextNode('0');
-    span.appendChild(spanTxt);
-
+    const span = Reaction.createElement('span', null, 0);
     // <div id="counter">
-    const Counter = document.createElement('div');
-    Counter.setAttribute('id', 'counter');
-    Counter.appendChild(downBtn);
-    Counter.appendChild(resetBtn);
-    Counter.appendChild(upBtn);
-    Counter.appendChild(span);
-
+    const Counter = Reaction.createElement('div', { id: 'counter' }, downBtn, resetBtn, upBtn, span);
     /* app 구성 */
     // <div id="app">
-    const App = document.createElement('div');
-    App.setAttribute('id', 'app');
-    App.appendChild(Header);
-    App.appendChild(Counter);
-
+    const App = Reaction.createElement('div', { id: 'app' }, Header, Counter);
     // root 요소에 app 추가
     document.querySelector('#root').appendChild(App);
   </script>
 
-  <script>
+  <script type="module">
     document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
   </script>
 
