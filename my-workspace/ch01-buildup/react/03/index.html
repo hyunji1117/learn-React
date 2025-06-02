@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 Todo List - React 컴포넌트 분리</title>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+    <style>
+      body {
+        background: #e7e6e6;
+      }
+
+      input {
+        width: 9.375rem;
+        height: 25px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.3125rem 0.625rem;
+        box-shadow:
+          inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+
+        border: none;
+        color: #000;
+      }
+
+      button {
+        margin: 0.625rem;
+        width: 2.8125rem;
+        height: 35px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.3125rem 0.625rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:
+          inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+
+        border: none;
+        color: #000;
+      }
+
+      button:after {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        direction: rtl;
+        z-index: -1;
+        border-radius: 5px;
+        box-shadow:
+          -7px -7px 20px 0px #fff9,
+          -4px -4px 5px 0px #fff9,
+          7px 7px 20px 0px #0002,
+          4px 4px 5px 0px #0001;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        color: #000;
+      }
+      button:hover:after {
+        left: auto;
+        right: 0;
+        width: 100%;
+      }
+      button:active {
+        top: 2px;
+      }
+      s {
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- <script>
+      document.querySelector('#filepath').textContent =
+        `ch${document.URL.split('/ch')[1]}index.html`;
+    </script> -->
+
+    <script type="text/babel">
+      /*
+          ┌───────── App ──────────┐
+          │           │            │
+        Header       Todo        Footer
+                      │
+                  ┌───┴────┐
+            TodoInput   TodoList
+                           │
+                        TodoItem
+    */
+      function App() {
+        return (
+          <div id="todo">
+            <header>
+              <h1>03 Todo List - React 컴포넌트 분리</h1>
+              <p>
+                파일 경로: <span id="filepath"></span>
+              </p>
+            </header>
+            <div id="main">
+              <div id="container">
+                <ul>
+                  <li>
+                    <h2>쇼핑 목록</h2>
+                    <div className="todoinput">
+                      <input type="text" autoFocus />
+                      <button type="button">추가</button>
+                    </div>
+                    <ul className="todolist">
+                      <li>
+                        <span>1</span>
+                        <span>
+                          <s>샘플1</s>
+                        </span>
+                        <button type="button">삭제</button>
+                      </li>
+                      <li>
+                        <span>2</span>
+                        <span>샘플2</span>
+                        <button type="button">삭제</button>
+                      </li>
+                      <li>
+                        <span>3</span>
+                        <span>샘플3</span>
+                        <button type="button">삭제</button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <footer>
+              <p>멋쟁이 사자처럼 FrontEnd BootCamp</p>
+            </footer>
+          </div>
+        );
+      }
+      ReactDOM.createRoot(document.querySelector('#root')).render(<App />);
+    </script>
+  </body>
+</html>
