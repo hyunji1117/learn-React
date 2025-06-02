@@ -36,7 +36,7 @@ const reaction = {
     return _root = {
       // 루트 노드 하위에 지정한 함수를 실행해서 받은 컴포넌트를 렌더링 한다.
       render(appFn){
-        _appComponent = _appComponent || appFn;
+        _appComponent = _appComponent ?? appFn;
         rootNode.firstChild?.remove();
         rootNode.appendChild(_appComponent());
       }
@@ -46,7 +46,9 @@ const reaction = {
   // 상태값(데이터) 관리
   useState: (initialValue) => {
     // 최초 호출되었을 경우에만 초기값을 지정하고 이후에 다시 호출되는 경우에는 이전 값을 유지한다.
-    _stateValue = _stateValue || initialValue;
+    // ??: null 병합 연산자
+    // 왼쪽 피연사가 null, undefined일 때 오른쪽 값을 사용
+    _stateValue = _stateValue ?? initialValue;
 
     // 상태값을 수정한다.
     function setValue(newValue){
