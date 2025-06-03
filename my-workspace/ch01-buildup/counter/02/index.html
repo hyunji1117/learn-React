@@ -1,87 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counter</title>
-  <style>
-    body {
-      background: #e7e6e6;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      body {
+        background: #e7e6e6;
+      }
 
-    input {
-      width: 9.375rem;
-  height: 25px;
-  color: #fff;
-  border-radius: 5px;
-  padding: .3125rem .625rem;
-      box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
+      input {
+        width: 9.375rem;
+        height: 25px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.3125rem 0.625rem;
+        box-shadow:
+          inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
 
-  border: none;
-  color: #000;
-    }
+        border: none;
+        color: #000;
+      }
 
-    button {
-  margin: .625rem;
-  width: 2.8125rem;
-  height: 35px;
-  color: #fff;
-  border-radius: 5px;
-  padding: .3125rem .625rem;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
+      button {
+        margin: 0.625rem;
+        width: 2.8125rem;
+        height: 35px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.3125rem 0.625rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:
+          inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
 
-  border: none;
-  color: #000;
-}
+        border: none;
+        color: #000;
+      }
 
-button:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  direction: rtl;
-  z-index: -1;
-  border-radius: 5px;
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
-  transition: all 0.3s ease;
-}
-button:hover {
-  color: #000;
-}
-button:hover:after {
-  left: auto;
-  right: 0;
-  width: 100%;
-}
-button:active {
-  top: 2px;
-}
-    s {
-      color: #888;
-    }
-  </style>
-</head>
-<body>
-  <!-- 
+      button:after {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        direction: rtl;
+        z-index: -1;
+        border-radius: 5px;
+        box-shadow:
+          -7px -7px 20px 0px #fff9,
+          -4px -4px 5px 0px #fff9,
+          7px 7px 20px 0px #0002,
+          4px 4px 5px 0px #0001;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        color: #000;
+      }
+      button:hover:after {
+        left: auto;
+        right: 0;
+        width: 100%;
+      }
+      button:active {
+        top: 2px;
+      }
+      s {
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
   <div id="app">
     <header>
       <h1>Counter - 02 JS로 UI 구성</h1>
@@ -96,108 +98,127 @@ button:active {
   </div> 
   -->
 
-  <div id="root"></div>
+    <div id="root"></div>
 
-  <script>
-    /* JS로 UI 구성 */
+    <script>
+      /* JS로 UI 구성 */
 
-    /* header 구성 */
-    // <h1>Counter - 02 JS로 UI 구성</h1>
-    const h1 = document.createElement('h1');
-    const h1Txt = document.createTextNode('Counter - 02 JS로 UI 구성');
-    h1.appendChild(h1Txt);
+      /* header 구성 */
+      // <h1>Counter - 02 JS로 UI 구성</h1>
+      const h1 = document.createElement('h1'); // h1 = DOM 요소
+      const h1Txt = document.createTextNode('Counter - 02 JS로 UI 구성');
+      // h1Txt = 텍스트 노드
 
-    // <p>파일 경로: <span id="filepath"></span></p>
-    const p = document.createElement('p');
-    const pTxt = document.createTextNode('파일 경로: ');
-    const filepath = document.createElement('span');
-    filepath.setAttribute('id', 'filepath');
-    // filepath.id = 'filepath';
-    p.appendChild(pTxt);
-    p.appendChild(filepath);
+      h1.appendChild(h1Txt);
+      // DOM 요소 `h1`에 텍스트 노드 `h1Txt`를 넣는다.
 
-    // <header></header>
-    const Header = document.createElement('header');
-    Header.appendChild(h1);
-    Header.appendChild(p);
+      /* `h1`이라는 부모 요소 안에, `h1Txt`라는 자식 노드를 "붙인다"(append) 라는 뜻이다. 
+    결과적으로 브라우저는 아래처럼 해석된다. 
+    `<h1>Counter - 02 JS로 UI 구성</h1>`
+    */
 
-    /* counter 구성 */
-    // <button type="button" onclick="handleDown()">-</button>
-    const downBtn = document.createElement('button');
-    downBtn.setAttribute('type', 'button');
-    downBtn.setAttribute('onclick', 'handleDown()');
-    const downBtnTxt = document.createTextNode('-');
-    downBtn.appendChild(downBtnTxt);
+      // <p>파일 경로: <span id="filepath"></span></p>
+      const p = document.createElement('p');
+      const pTxt = document.createTextNode('파일 경로: ');
+      const filepath = document.createElement('span');
+      filepath.setAttribute('id', 'filepath');
+      /* 
+    setAttribute(속성이름, 값):
+    HTML 요소에 새로운 속성을 추가하거나 기존 속성 값을 변경할 때 사용하는 메서드 이다. 
+    */
 
-    // <button type="button" onclick="handleReset(event)">0</button>
-    const resetBtn = document.createElement('button');
-    resetBtn.setAttribute('type', 'button');
-    resetBtn.setAttribute('onclick', 'handleReset()');
-    const resetBtnTxt = document.createTextNode('0');
-    resetBtn.appendChild(resetBtnTxt);
+      // filepath.id = 'filepath';
+      p.appendChild(pTxt);
+      p.appendChild(filepath);
 
-    // <button type="button" onclick="handleUp()">+</button>
-    const upBtn = document.createElement('button');
-    upBtn.setAttribute('type', 'button');
-    upBtn.setAttribute('onclick', 'handleUp()');
-    const upBtnTxt = document.createTextNode('+');
-    upBtn.appendChild(upBtnTxt);
+      // <header></header>
+      const Header = document.createElement('header');
+      Header.appendChild(h1);
+      Header.appendChild(p);
 
-    // <span>0</span>
-    const span = document.createElement('span');
-    const spanTxt = document.createTextNode('0');
-    span.appendChild(spanTxt);
+      /* counter 구성 */
+      // <button type="button" onclick="handleDown()">-</button>
+      const downBtn = document.createElement('button');
+      downBtn.setAttribute('type', 'button');
+      downBtn.setAttribute('onclick', 'handleDown()');
+      const downBtnTxt = document.createTextNode('-');
+      downBtn.appendChild(downBtnTxt);
+      /* 
+    `createElement`는 재료 준비,  
+    `setAttribute`는 라벨 붙이기,  
+    `appendChild`는 진열장에 올려놓기 = **손님이 볼 수 있음(출력됨)**
+    즉, 생성된 DOM을 화면에 출력하기 위해 메서드를 연결해야 한다. 
+    */
 
-    // <div id="counter">
-    const Counter = document.createElement('div');
-    Counter.setAttribute('id', 'counter');
-    Counter.appendChild(downBtn);
-    Counter.appendChild(resetBtn);
-    Counter.appendChild(upBtn);
-    Counter.appendChild(span);
+      // <button type="button" onclick="handleReset(event)">0</button>
+      const resetBtn = document.createElement('button');
+      resetBtn.setAttribute('type', 'button');
+      resetBtn.setAttribute('onclick', 'handleReset()');
+      const resetBtnTxt = document.createTextNode('0');
+      resetBtn.appendChild(resetBtnTxt);
 
-    /* app 구성 */
-    // <div id="app">
-    const App = document.createElement('div');
-    App.setAttribute('id', 'app');
-    App.appendChild(Header);
-    App.appendChild(Counter);
+      // <button type="button" onclick="handleUp()">+</button>
+      const upBtn = document.createElement('button');
+      upBtn.setAttribute('type', 'button');
+      upBtn.setAttribute('onclick', 'handleUp()');
+      const upBtnTxt = document.createTextNode('+');
+      upBtn.appendChild(upBtnTxt);
 
-    // root 요소에 app 추가
-    document.querySelector('#root').appendChild(App);
-  </script>
+      // <span>0</span>
+      const span = document.createElement('span');
+      const spanTxt = document.createTextNode('0');
+      span.appendChild(spanTxt);
 
-  <script>
-    document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
-  </script>
+      // <div id="counter">
+      const Counter = document.createElement('div');
+      Counter.setAttribute('id', 'counter');
+      Counter.appendChild(downBtn);
+      Counter.appendChild(resetBtn);
+      Counter.appendChild(upBtn);
+      Counter.appendChild(span);
 
-  <script>
-    let count = 0;
+      /* app 구성 */
+      // <div id="app">
+      const App = document.createElement('div');
+      App.setAttribute('id', 'app');
+      App.appendChild(Header);
+      App.appendChild(Counter);
 
-    // 카운터 감소
-    const handleDown = () => {
-      // 데이터 갱신, count 값 감소
-      count--;
-      // 화면 갱신, count 값 화면에 표시
-      document.querySelector('#counter > span').textContent = count;
-    };
+      // root 요소에 app 추가
+      document.querySelector('#root').appendChild(App);
+    </script>
 
-    // 카운터 증가
-    const handleUp = () => {
-      // 데이터 갱신, count 값 증가
-      count++;
-      // 화면 갱신, count 값 화면에 표시
-      document.querySelector('#counter > span').textContent = count;
-    };
+    <script>
+      document.querySelector('#filepath').textContent =
+        `ch${document.URL.split('/ch')[1]}index.html`;
+    </script>
 
-    // 카운터 초기화
-    const handleReset = event => {
-      // 데이터 갱신, count 값 초기화
-      count = 0;
-      // 화면 갱신, count 값 화면에 표시
-      document.querySelector('#counter > span').textContent = count;
-    };
-  </script>
+    <script>
+      let count = 0;
 
-</body>
+      // 카운터 감소
+      const handleDown = () => {
+        // 데이터 갱신, count 값 감소
+        count--;
+        // 화면 갱신, count 값 화면에 표시
+        document.querySelector('#counter > span').textContent = count;
+      };
+
+      // 카운터 증가
+      const handleUp = () => {
+        // 데이터 갱신, count 값 증가
+        count++;
+        // 화면 갱신, count 값 화면에 표시
+        document.querySelector('#counter > span').textContent = count;
+      };
+
+      // 카운터 초기화
+      const handleReset = (event) => {
+        // 데이터 갱신, count 값 초기화
+        count = 0;
+        // 화면 갱신, count 값 화면에 표시
+        document.querySelector('#counter > span').textContent = count;
+      };
+    </script>
+  </body>
 </html>
