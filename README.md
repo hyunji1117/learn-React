@@ -218,7 +218,7 @@
   - 🧑‍💻 [03 Todo List - React로 UI 구성(JSX)](./workspace-ins/ch01-buildup/react/03/index.html)
     + workspace/ch01-buildup/react/02 폴더 복사해서 03 폴더 생성
 
-### 5일차(2025.06.02 화)
+### 5일차(2025.06.02 월)
 #### 오전(3시간)
 * 03 React
   - 🧑‍💻 [04 Todo List - React 컴포넌트 분리](./workspace-ins/ch01-buildup/react/04/index.html)
