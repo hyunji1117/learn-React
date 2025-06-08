@@ -1,72 +1,50 @@
-rounded-button {
-  margin: 0.625rem;
-  width: 2.8125rem;
-  height: 35px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 0.3125rem 0.625rem;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  box-shadow:
-    inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-  outline: none;
-
-  border: none;
-  color: #000;
-}
-
+/* 전체 스타일 적용 
+* 버튼 스타일을 button과 .rounded-button으로 꾸밈
+* input, body 등도 스타일 통일
+* 💡 rounded-button은 CSS 선택자 이름이지만 HTML에선 class="rounded-button"으로 적용
+*/
 body {
   background: #e7e6e6;
 }
 
-input {
-  width: 9.375rem;
-  height: 25px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 0.3125rem 0.625rem;
+.rounded-button {
+  width: 6.25rem;
+  height: 50px;
+  background-color: #4CAF50;
+  /* Green background */
+  border: none;
+  /* Remove borders */
+  color: white;
+  /* White text */
+  padding: 6px 18px;
+  /* Padding */
+  text-align: center;
+  /* Center text */
+  text-decoration: none;
+  /* Remove underline */
+  display: inline-block;
+  /* Display as inline-block */
+  font-size: 16px;
+  /* Font size */
+  margin: 4px 4px;
+  /* Margin */
+  cursor: pointer;
+  /* Cursor pointer */
+  border-radius: 6px;
+  /* Border radius */
   box-shadow:
     inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1),
     4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
 
-  border: none;
-  color: #000;
-}
-
-button {
-  margin: 0.625rem;
-  width: 2.8125rem;
-  height: 35px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 0.3125rem 0.625rem;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
-  background: transparent;
-  cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  display: inline-block;
-  box-shadow:
-    inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-  outline: none;
-
-  border: none;
-  color: #000;
 }
 
-button:after {
+.rounded-button:after {
   position: absolute;
   content: '';
   width: 0;
@@ -84,18 +62,15 @@ button:after {
   transition: all 0.3s ease;
 }
 
-button:hover {
-  color: #000;
-}
-
-button:hover:after {
+.rounded-button:hover:after {
   left: auto;
   right: 0;
   width: 100%;
+  z-index: 1;
 }
 
-button:active {
-  top: 2px;
+.rounded-button:active {
+  top: 1px;
 }
 
 s {

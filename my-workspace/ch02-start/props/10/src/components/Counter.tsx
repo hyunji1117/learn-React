@@ -1,3 +1,6 @@
+// 상태 관리 + 이벤트 처리 핵심
+
+// useState로 count라는 상태 선언
 import { useState } from 'react';
 import Button from './Button';
 
@@ -5,7 +8,15 @@ import Button from './Button';
 function Counter() {
   console.log('\tCounter 호출됨');
 
+  // setCount(...) 호출 시 컴포넌트 자동 리렌더링
   const [count, setCount] = useState(0);
+
+  /**
+   * 3가지 핸들러 정의:
+    - handleUp: +1
+    - handleDown: -1
+    - handleReset: 0으로 초기화
+   */
 
   // 카운터 감소
   const handleDown = () => {
@@ -27,6 +38,10 @@ function Counter() {
 
   return (
     <div id="counter">
+      {/* 
+      각 버튼에 onClick 이벤트 핸들러 전달
+      props로 Button 컴포넌트에 내려줌
+      */}
       <Button textColor="#333" color="red" onClick={handleDown}>
         -
       </Button>
