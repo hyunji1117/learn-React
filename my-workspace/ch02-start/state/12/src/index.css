@@ -7,7 +7,7 @@ body {
   background: #e7e6e6;
 }
 
-.rounded-button {
+.button {
   width: 6.25rem;
   height: 50px;
   background-color: #4CAF50;
@@ -44,7 +44,7 @@ body {
   position: relative;
 }
 
-.rounded-button:after {
+.button:after {
   position: absolute;
   content: '';
   width: 0;
@@ -62,14 +62,14 @@ body {
   transition: all 0.3s ease;
 }
 
-.rounded-button:hover:after {
+.button:hover:after {
   left: auto;
   right: 0;
   width: 100%;
   z-index: 1;
 }
 
-.rounded-button:active {
+.button:active {
   top: 1px;
 }
 
