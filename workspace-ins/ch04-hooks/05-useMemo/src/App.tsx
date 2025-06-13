@@ -28,7 +28,7 @@ function App() {
 
   // TODO name이 바뀔때 리렌더링이 필요하지만 소수 계산은 다시 할 필요 없음
   // num이 바뀔때만 다시 계산하고 num이 바뀌지 않으면 메모이제이션 된 값을 반환해야 함
-  const prime = useMemo(() => isPrime(num), [num]);
+  const prime = isPrime(num);
   
   return (
     <>
