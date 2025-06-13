@@ -1,5 +1,6 @@
-import Counter from "@components/Counter";
-import Header from "@components/Header";
+import Counter from '@components/Counter';
+import Header from '@components/Header';
+import './App.css';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <Header />
       <Counter>100</Counter>
     </>
-  );  
+  );
 }
 
-export default App
+export default App;
