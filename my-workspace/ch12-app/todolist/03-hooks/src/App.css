@@ -1,0 +1,115 @@
+.container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  border-style: solid;
+}
+
+.circle {
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  left: -10px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+}
+
+/* 전체 스타일 적용 
+* 버튼 스타일을 button과 .rounded-button으로 꾸밈
+* input, body 등도 스타일 통일
+* 💡 rounded-button은 CSS 선택자 이름이지만 HTML에선 class="rounded-button"으로 적용
+*/
+body {
+  background: #e7e6e6;
+}
+
+button {
+  width: 6.25rem;
+  height: 50px;
+  margin: 1.25rem;
+  /* background-color: #4CAF50; */
+  background: transparent;
+  /* Green background */
+  border: none;
+  /* Remove borders */
+  /* color: white; */
+  color: #121212;
+  /* White text */
+  padding: 6px 18px;
+  /* Padding */
+  text-align: center;
+  /* Center text */
+  text-decoration: none;
+  /* Remove underline */
+  display: inline-block;
+  /* Display as inline-block */
+  font-size: 16px;
+  /* Font size */
+  margin: 4px 4px;
+  /* Margin */
+  cursor: pointer;
+  /* Cursor pointer */
+  border-radius: 6px;
+  /* Border radius */
+  box-shadow:
+    inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+button:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  border-radius: 5px;
+  box-shadow:
+    -7px -7px 20px 0px #fff9,
+    -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002,
+    4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+
+button:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+button:active {
+  top: 1px;
+}
+
+s {
+  color: #888;
+}
+
+input {
+  width: 9.375rem;
+  height: 25px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.3125rem 0.625rem;
+  margin: 1.25rem 1.25rem;
+  box-shadow:
+    inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+
+  border: none;
+  color: #000;
+}
