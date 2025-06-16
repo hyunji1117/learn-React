@@ -1,9 +1,8 @@
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import TodoContainer from '@pages/TodoContainer';
-import './App.css';
 
-function App() {
+function App(){
   console.log('App 렌더링');
   return (
     <div id="todo">
@@ -14,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
