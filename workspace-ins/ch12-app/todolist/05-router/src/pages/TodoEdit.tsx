@@ -54,7 +54,6 @@ function TodoEdit() {
           <label htmlFor="content">내용 :</label>
           <textarea 
             id="content" cols={23} rows={5} 
-            defaultValue={ item.content } 
             { ...register('content', {
               required: '내용을 입력하세요.',
               pattern: {
@@ -63,9 +62,14 @@ function TodoEdit() {
               }
             }) }
           />
+          <div className="input-error">{ errors.content?.message }</div>
           <br />
           <label htmlFor="done">완료 :</label>
-          <input type="checkbox" id="done" defaultChecked={ item.done } />
+          <input 
+            type="checkbox" 
+            id="done" 
+            { ...register('done') }
+          />
           <br />
           <button type="submit">수정</button>
           <Link to={`/list/${item._id}`}>취소</Link>
