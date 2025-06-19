@@ -1,6 +1,7 @@
 import { RouterProvider } from "react-router";
 import router from "./routes";
-import './App.css';
+// import './App.css';
+import './ljy.css';
 
 function App() {
   return (
