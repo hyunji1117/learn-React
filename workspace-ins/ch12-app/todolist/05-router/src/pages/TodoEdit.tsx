@@ -1,4 +1,5 @@
 import type { TodoItem } from "@pages/TodoInfo";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate, useOutletContext } from "react-router";
 
 
@@ -12,27 +13,56 @@ function TodoEdit() {
 
   const { item } = useOutletContext<OutletContextProps>();
 
-  const updateTodo = (event: React.FormEvent) => {
-    event.preventDefault();
-      // TODO API 서버에 수정 요청
+  const { register, handleSubmit, formState: { errors } } = useForm<TodoItem>({
+    defaultValues: {
+      title: item.title,
+      content: item.content,
+      done: item.done,
+    }
+  });
 
-      alert('할일이 수정 되었습니다.');
+  const updateTodo = (formData: TodoItem) => {
+    console.log('API 서버에 수정 요청', formData);
+    // TODO API 서버에 수정 요청
 
-      // 상세 보기로 이동
-      // navigate(-1); // window.history.go(-1);
-      navigate(`/list/${item._id}`);
+    alert('할일이 수정 되었습니다.');
+
+    // 상세 보기로 이동
+    // navigate(-1); // window.history.go(-1);
+    navigate(`/list/${item._id}`);
   }
 
   return (
     <>
       <h2>할일 수정</h2>
       <div className="todo">
-        <form onSubmit={ updateTodo }>
+        <form onSubmit={ handleSubmit(updateTodo) }>
           <label htmlFor="title">제목 :</label>
-          <input type="text" id="title" defaultValue={ item.title } autoFocus />
+          <input 
+            type="text" 
+            id="title" 
+            { ...register('title', {
+              required: '제목을 입력하세요.',
+              pattern: {
+                value: /\S/,
+                message: '제목에 공백만 입력할 수 없습니다.'
+              }
+            }) }
+          />
+          <div className="input-error">{ errors.title?.message }</div>
           <br />
           <label htmlFor="content">내용 :</label>
-          <textarea id="content" cols={23} rows={5} defaultValue={ item.content } />
+          <textarea 
+            id="content" cols={23} rows={5} 
+            defaultValue={ item.content } 
+            { ...register('content', {
+              required: '내용을 입력하세요.',
+              pattern: {
+                value: /\S/,
+                message: '내용에 공백만 입력할 수 없습니다.'
+              }
+            }) }
+          />
           <br />
           <label htmlFor="done">완료 :</label>
           <input type="checkbox" id="done" defaultChecked={ item.done } />

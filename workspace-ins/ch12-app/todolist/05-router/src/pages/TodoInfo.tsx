@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet, useMatch, useParams } from "react-router";
 
 export interface TodoItem {
@@ -29,32 +29,45 @@ function TodoInfo() {
 
   const infoMatch = useMatch('/list/:_id');
 
-  useEffect(() => {
-    // TODO API 서버와 통신해서 item 받아오기
+  const [ data, setData ] = useState<TodoItem | null>(null);
 
-    
-  }, []);
+  const fetchTodoInfo = () => {
+    console.log('API 서버에 상세 정보 요청');
+    // TODO API 서버에 상세 정보 요청
+
+    setData(item);
+  };
+
+  useEffect(() => {
+    fetchTodoInfo();
+  }, []); // 빈 배열을 전달해서 마운트시에만 실행
 
   return (
     <div id="main">
       <h2>할일 상세 보기</h2>
-      <div className="todo">
-        <div>제목 : { item.title }</div>
-        <div>내용 : { item.content }</div>
-        <div>상태 : { item.done ? '완료' : '미완료' }</div>
-        <div>작성일 : { item.createdAt }</div>
-        <div>수정일 : { item.updatedAt }</div>
 
-        { infoMatch && 
-          <>
-            <Link to={`/list/${_id}/edit`}>수정</Link>
-            <Link to="/list">목록</Link>
-          </>
-        }
-        
-      </div>
+      { data && 
+        <>
+          <div className="todo">
+            <div>제목 : { data.title }</div>
+            <div>내용 : { data.content }</div>
+            <div>상태 : { data.done ? '완료' : '미완료' }</div>
+            <div>작성일 : { data.createdAt }</div>
+            <div>수정일 : { data.updatedAt }</div>
 
-      <Outlet context={{ item }} />
+            { infoMatch && 
+              <>
+                <Link to={`/list/${_id}/edit`}>수정</Link>
+                <Link to="/list">목록</Link>
+              </>
+            }
+            
+          </div>
+
+          <Outlet context={{ item }} />
+        </>
+      }
+      
 
     </div>
   );
