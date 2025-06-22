@@ -178,6 +178,7 @@ footer {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
+  overflow-y: scroll;
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -257,8 +258,7 @@ footer {
       grid-template-columns: 2rem 1fr auto;
       align-items: center;
       span {
-        width: 1.5rem;
-        height: 1.5rem;
+        padding: 0.125rem 0.5rem;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
@@ -328,6 +328,7 @@ footer {
   /* 투두아이템타이틀 */
   span + a[href^="/list"] {
     padding: 0;
+    margin-left: 1rem;
     box-sizing: border-box;
     border-radius: 0;
     border: 0;
