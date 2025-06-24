@@ -53,19 +53,13 @@ function BoardInfo() {
     <>
       <h1>01 Fetch API</h1>
 
-      { isLoading && 
-        <p>로딩중...</p>
-      }
-
-      { error && 
-        <p>{ error.message }</p>
-      }
-
+      { isLoading && <p>로딩중...</p> }
+      { error && <p>{ error.message }</p> }
       { data && 
         <>
           <h2>{ data.title }</h2>
           <p>{ data.content }</p>
-          <CommentList replies={ data.replies } />
+          <CommentList />
         </>
       }
 

@@ -13,7 +13,7 @@ function CommentNew() {
       await fetch('https://fesp-api.koyeb.app/market/posts/1/replies?delay=1000', {
         headers: {
           'Client-Id': 'openmarket',
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // 요청 바디의 데이터 타입을 서버에 json이라고 알림
         },
         method: 'POST',
         body: JSON.stringify(jsonBody), // 객체를 JSON 문자열로 변환
@@ -28,7 +28,6 @@ function CommentNew() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    // formData.append('content', content);
     requestAddComment(formData);
   };
 
@@ -36,7 +35,13 @@ function CommentNew() {
     <>
       <h4>댓글 등록</h4>
       <form onSubmit={ handleAddComment }>
-        <textarea value={ content } name="content" onChange={ e => setContent(e.target.value) } rows={3} cols={30} placeholder="댓글 내용" /><br />
+        <textarea 
+          name="content" 
+          rows={3} cols={30} 
+          placeholder="댓글 내용" 
+          value={ content } 
+          onChange={ e => setContent(e.target.value) } 
+        /><br />
         <button type="submit">등록</button>
       </form>
     </>
