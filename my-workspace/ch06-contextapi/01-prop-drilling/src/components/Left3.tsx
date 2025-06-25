@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
+interface Left3Props {
+  count: number;
+}
 
-function Left3() {
-  useEffect(()=>{
-    console.log('#### Left3 렌더링.');
-  });
+export default function Left3({ count }: Left3Props) {
   return (
-    <div>
-      <h3>Left3</h3>
-      <span>0</span>
+    <div className="box">
+      <b>Left3</b>
+      <p>{count}</p>
     </div>
   );
 }
-
-export default Left3;

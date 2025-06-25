@@ -1,15 +1,13 @@
-import { useEffect } from 'react';
+interface Right3Props {
+  onIncrease: () => void;
+}
 
-function Right3() {
-  useEffect(()=>{
-    console.log('#### Right3 렌더링.');
-  });
+// Right3.tsx
+export default function Right3({ onIncrease }: Right3Props) {
   return (
-    <div>
-      <h3>Right3</h3>
-      <button onClick={ () => {} }>+1</button>
+    <div className="box">
+      <b>Right3</b>
+      <button onClick={onIncrease}>+1</button>
     </div>
   );
 }
-
-export default Right3;

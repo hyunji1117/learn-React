@@ -1,16 +1,14 @@
-import Right3 from '@/components/Right3';
-import { useEffect } from 'react';
+import Right3 from './Right3';
 
-function Right2() {
-  useEffect(()=>{
-    console.log('### Right2 렌더링.');
-  });
+interface Right2Props {
+  onIncrease: () => void;
+}
+
+export default function Right2({ onIncrease }: Right2Props) {
   return (
-    <div>
-      <h2>Right2</h2>
-      <Right3 />
+    <div className="box">
+      <b>Right2</b>
+      <Right3 onIncrease={onIncrease} />
     </div>
   );
 }
-
-export default Right2;
