@@ -1,15 +1,16 @@
-interface Right1Props {
-  onIncrease: () => void;
-}
+import Right2 from '@/components/Right2';
+import { useEffect } from 'react';
 
-// Right1.tsx
-import Right2 from './Right2';
-
-export default function Right1({ onIncrease }: Right1Props) {
+function Right1({ countUp }: { countUp: (step: number) => void }) {
+  useEffect(()=>{
+    console.log('## Right1 렌더링.');
+  });
   return (
-    <div className="box">
-      <b>Right1</b>
-      <Right2 onIncrease={onIncrease} />
+    <div>
+      <h1>Right1</h1>
+      <Right2 countUp={ countUp } />
     </div>
   );
 }
+
+export default Right1;

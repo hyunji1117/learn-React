@@ -1,14 +1,16 @@
-import Left2 from './Left2';
+import Left2 from '@/components/Left2';
+import { useEffect } from 'react';
 
-interface Left1Props {
-  count: number;
-}
-
-export default function Left1({ count }: Left1Props) {
+function Left1({ count }: { count: number }) {
+  useEffect(()=>{
+    console.log('## Left1 렌더링.');
+  });
   return (
-    <div className="box">
-      <b>Left1</b>
-      <Left2 count={count} />
+    <div>
+      <h1>Left1</h1>
+      <Left2 count={ count } />
     </div>
   );
 }
+
+export default Left1;

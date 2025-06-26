@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // 리듀서와 액션 생성자를 간단하게 정의
 // 반환값 { reducer, actions, caseReducers }
@@ -16,10 +16,10 @@ const counterSlice = createSlice({
     countDown: (state, action) => {
       state.count -= action.payload;
     },
-    countReset: (state) => {
+    countReset: state => {
       state.count = 0;
-    },
-  },
+    }
+  }
 });
 
 console.log(counterSlice);
