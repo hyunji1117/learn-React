@@ -357,16 +357,16 @@ npm run dev
 
 ### 4.4.2 레이아웃
 * 레이아웃 파일이 있는 경로와 하위 경로의 page를 보여줄때 사용하는 공통의 UI 정의
-  - `<html>` `<body>` 태그 필수로 작성
   - page 파일을 `{ children }` 으로 래핑
-* 루트 레이아웃(`app/layout.tsx`) 필수
 * 하위 폴더의 layout과 중첩됨
 * `layout.js`, `layout.jsx`, `layout.ts`, `layout.tsx`로 작성
 
 #### 루트 레이아웃
 * app 폴더 하위에 만들어야 하는 필수 layout 파일
+  * `app/layout.tsx`
 * 모든 경로에 적용할 공통 UI 작성
 * 루트 레이아웃에만 html, body 태그 포함 가능
+  - `<html>` `<body>` 태그 필수로 작성
 * page 컴포넌트를 children prop으로 받음
 
 * `app/layout.tsx`
@@ -432,7 +432,7 @@ npm run dev
 ### 4.4.3 메타데이터
 * layout, page에서 metadata 변수나 generateMetadata 함수를 내보내기 하면 메타데이터 정의 가능
   - metadata: 정적인 메타데이터 출력
-  - generatrMetadata: 동적이 메타데이터 출력
+  - generateMetadata: 동적이 메타데이터 출력
 
 #### 메타데이터와 SEO
 * layout, page에서 metadata 변수나 generateMetadata 함수를 내보내기 하면 메타데이터 정의 가능
@@ -748,7 +748,7 @@ export async function createPost(formData) {
   - app/posts/[id]/[slug]/page.tsx
     + /posts/1/likes -> { id: '1', slug: 'likes' }
     + /posts/2/likes -> { id: '2', slug: 'likes' }
-    + /posts/2/favorites -> { id: '1', slug: 'favorites' }
+    + /posts/2/favorites -> { id: '2', slug: 'favorites' }
   - app/posts/[id]/[slug]/[sid]/page.tsx
     + /posts/3/likes/4 -> { id: '3', slug: 'likes', sid: '4' }
     + /posts/3/favorites/4 -> { id: '3', slug: 'favorites', sid: '4' }
